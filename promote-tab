@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Promotes a record-page tab to first position (and sets it as the default
+# focused tab) for a given object. Use --reset to restore standard positions.
+#
+# Usage:
+#   ./promote-tab company Tasks
+#   ./promote-tab person Notes
+#   ./promote-tab company --reset
+
+set -euo pipefail
+
+if [[ $# -lt 2 ]]; then
+  echo "Usage:" >&2
+  echo "  ./promote-tab <objectSingular> <Tab Title>" >&2
+  echo "  ./promote-tab <objectSingular> --reset" >&2
+  exit 2
+fi
+
+cd "$(dirname "$(readlink -f "$0")")"
+exec node packages/twenty-server/scripts/promote-record-page-tab.js "$@"
