@@ -74,6 +74,12 @@ export const useCreateNewIndexRecord = ({
 
   const createNewIndexRecord = useCallback(
     async (recordInput?: Partial<ObjectRecord>) => {
+      if (objectMetadataItem.nameSingular === 'company') {
+        closeSidePanelMenu();
+        navigate(AppPath.OnboardCompany);
+        return undefined;
+      }
+
       const recordId = v4();
       const recordInputFromRLSPredicates = buildRecordInputFromRLSPredicates();
       const recordInputFromFilters = buildRecordInputFromFilters();

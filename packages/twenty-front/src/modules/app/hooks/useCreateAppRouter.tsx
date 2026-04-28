@@ -28,6 +28,12 @@ const RecordShowPage = lazy(() =>
   })),
 );
 
+const OnboardCompany = lazy(() =>
+  import('~/pages/companies/OnboardCompany').then((module) => ({
+    default: module.OnboardCompany,
+  })),
+);
+
 const SignInUp = lazy(() =>
   import('~/pages/auth/SignInUp').then((module) => ({
     default: module.SignInUp,
@@ -223,6 +229,14 @@ export const useCreateAppRouter = (
             element={
               <LazyRoute>
                 <RecordShowPage />
+              </LazyRoute>
+            }
+          />
+          <Route
+            path={AppPath.OnboardCompany}
+            element={
+              <LazyRoute>
+                <OnboardCompany />
               </LazyRoute>
             }
           />
